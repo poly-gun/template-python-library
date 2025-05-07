@@ -7,12 +7,12 @@
 #
 # - Default GitHub environment variables: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables#default-environment-variables
 
-name := template-python-library
+name := template-python-project
 ifdef CI_PROJECT_NAME
     override name = $(CI_PROJECT_NAME)
 endif
 
-homebrew-tap := poly-gun/template-python-library
+homebrew-tap := poly-gun/template-python-project
 ifdef HOMEBREW_TAP
     override homebrew-tap = $(HOMEBREW_TAP)
 endif

@@ -39,10 +39,8 @@ dynamic = ["version"]
 
 [project.scripts]
 # Only applicable for callable(s).
-# - internal.cli is "./internal/cli" containing a "__init__.py" file.
-# - entrypoint is "entrypoint.py".
-# - "main" is the "main" function in "entrypoint.py".
-# example = "internal.cli:entrypoint.main"
+# - The callable doesn't necessarily have to be the name of the project.
+example-script-name = "example.cli:main.executable"
 
 # development dependency groups
 [project.optional-dependencies]
@@ -68,8 +66,8 @@ documentation = [
 all = ["example[testing,documentation,code-generation]"]
 
 [project.urls]
-Homepage = "https://github.com/poly-gun/template-python-library"
-Issues = "https://github.com/poly-gun/template-python-library"
+Homepage = "https://github.com/poly-gun/template-python-project"
+Issues = "https://github.com/poly-gun/template-python-project"
 
 [tool.setuptools_scm]
 version_file = "src/example/internal/__version__.py"

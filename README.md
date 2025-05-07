@@ -1,8 +1,8 @@
-# `template-python-library`
+# `template-python-project`
 
 ## Overview
 
-The following repository demonstrates an example Python *shared codebase* -- a library.
+The following repository demonstrates an example Python project -- both as a library and callable.
 
 Additionally, there includes documentation, examples, and scripts relating to:
 
@@ -11,10 +11,7 @@ Additionally, there includes documentation, examples, and scripts relating to:
 - Private CA certificates and considerations
 - Virtual Environments
 - Local development opportunities and implications
-
-`template-python-library` is not meant to be used as a template for **public package(s)**; however, 
-the project can be easily refactored and documentation updated.
-
+- 
 ### CI-CD
 
 The project includes a [`.gitlab-ci.yml`](./.gitlab-ci.yml) file that demonstrates automated-related builds, testing,
