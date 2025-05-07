@@ -54,7 +54,7 @@ cat "$(git rev-parse --show-toplevel)/assets/certificates/ca.crt.example.pem" >>
 
 # Install common packages through private registry.
 
-pip install . --no-cache-dir --force-reinstall \
+pip install --upgrade pip --no-cache-dir --force-reinstall \
     --index-url "https://artifactory.example.com/artifactory/api/pypi/pypi/simple"
 
 # Optionally install common packages through private registry (--extra-index-url).
