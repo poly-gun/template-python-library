@@ -12,7 +12,7 @@ Additionally, there includes documentation, examples, and scripts relating to:
 - Virtual Environments
 - Local development opportunities and implications
 
-### CI-CD
+## CI-CD
 
 The project includes a [`.gitlab-ci.yml`](./.gitlab-ci.yml) file that demonstrates automated-related builds, testing,
 and other useful "workflows" or "pipeline" logic. While not compatible with GitHub, configuration
