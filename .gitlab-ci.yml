@@ -1,6 +1,6 @@
 default:
     tags:
-        - runner-exampl
+        - runner-example
 stages:
     - Testing
     - Build
