@@ -1,0 +1,128 @@
+# https://github.com/pypa/sampleproject/blob/main/pyproject.toml
+
+[build-system]
+requires = ["setuptools", "setuptools_scm", "setuptools_scm_git_semver"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "example"
+description = "..."
+authors = [
+    { name = "Jacob B. Sanders" },
+]
+
+readme = "README.md"
+
+requires-python = ">=3.13"
+
+classifiers = [
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+
+dependencies = [
+    "packaging>=24.1",
+    "pyyaml>=6.0.2",
+    "pydantic>=2.10.4",
+    "psutil>=6.0.0",
+    "requests>=2.32.3",
+    "tqdm>=4.66.5",
+    "boto3>=1.35.1",
+    "botocore>=1.35.36",
+    "typer>=0.12.5",
+    "jsonschema>=4.23.0",
+]
+
+dynamic = ["version"]
+
+[project.scripts]
+# Only applicable for callable(s).
+# - internal.cli is "./internal/cli" containing a "__init__.py" file.
+# - entrypoint is "entrypoint.py".
+# - "main" is the "main" function in "entrypoint.py".
+# example = "internal.cli:entrypoint.main"
+
+# development dependency groups
+[project.optional-dependencies]
+
+# pytest + testing dependency group
+testing = [
+    "pytest>=8.3.4",
+    "pytest-cov>=6.0.0",
+    "pytest-sugar>=1.0.0"
+]
+
+# code generation
+code-generation = [
+    "datamodel-code-generator"
+]
+
+# documentation feature dependency group
+documentation = [
+    "mkdocs>=1.6.1"
+]
+
+# all optional dependency groups
+all = ["example[testing,documentation,code-generation]"]
+
+[project.urls]
+Homepage = "https://github.com/poly-gun/template-python-library"
+Issues = "https://github.com/poly-gun/template-python-library"
+
+[tool.setuptools_scm]
+version_file = "src/example/internal/__version__.py"
+version_scheme = "only-version"
+local_scheme = "no-local-version"
+normalize = false
+
+[tool.pytest.ini_options]
+# We set error warning filters in order to enforce that particular
+# undesired warnings are not emitted as part of the codebase. If you
+# want to override these filters with pytest's default warning filters
+# (i.e. print out deprecation warnings instead of erroring out on them),
+# you can run pytest with the -Wd flag.
+filterwarnings = [
+    # Prevents declaring tests that cannot be collected by pytest
+    "error::pytest.PytestCollectionWarning",
+    # Prevents use of functionality that is deprecated or pending deprecation
+    "error::DeprecationWarning",
+    "error::PendingDeprecationWarning",
+    # Do not error out on deprecation warnings stemming from our current
+    # version of setuptools (57.5.0) in a Python 3.10 environment. When we add
+    # support for the latest version of setuptools, we should be able to remove
+    # these filters.
+    'default:The distutils\.sysconfig module is deprecated:DeprecationWarning',
+    # Python 3.10.9 introduced a new DeprecationWarning for the implicit
+    # creation of event loops. Python plans to remove this warning in the
+    # next patch. This filter exception should also be removed once it's
+    # confirmed that tests are passing again in the latest Python 3.10.
+    # https://github.com/python/cpython/issues/100160
+    'default:There is no current event loop:DeprecationWarning',
+    # pytest-cov is incompatible with pytest-xdist 3.x because pytest-cov
+    # uses the config variable for rsyncdir. This filter exception should
+    # be able to be removed once both of the following issues are resolved.
+    # https://github.com/pytest-dev/pytest-cov/issues/557
+    # https://github.com/pytest-dev/pytest-xdist/issues/825
+    'default:The --rsyncdir command line argument and rsyncdirs config variable are deprecated.:DeprecationWarning'
+]
+
+[tool.black]
+line-length = 160
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+where = ["src/"]
+
+# namespaces = true  # true by default
+#
+# where = ["."]  # ["."] by default
+# include = ["*"]  # ["*"] by default
+# exclude = []  # empty by default
+
+# [tool.setuptools.package-data]
+# "internal.data" = ["*.json"]
+# "vendor" = ["vendor/*"]

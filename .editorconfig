@@ -1,0 +1,28 @@
+# EditorConfig is awesome: https://editorconfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.json]
+tab_width = 4
+ij_json_indent_size = 4
+
+[{*.yaml,*.yml}]
+tab_width = 4
+ij_yaml_indent_size = 4
+
+
+[*.py]
+max_line_length = off
+ij_python_blank_lines_around_top_level_classes_functions = 1
+ij_python_wrap_long_lines = false
+
+[*.bash]
+tab_width = 4
+ij_shell_indent_size = 4
+ij_shell_tab_width = 4

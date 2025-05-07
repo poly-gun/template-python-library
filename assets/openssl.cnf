@@ -1,0 +1,30 @@
+[ ca ]
+default_ca      = ca-default
+
+[ ca-default ]
+dir             = ./assets/certificates
+database        = $dir/index.txt
+new_certs_dir   = $dir/newcerts
+serial          = $dir/serial
+private_key     = $dir/private/ca.key.pem
+certificate     = $dir/certificates/ca.crt.example.pem
+default_md      = sha256
+policy          = policy-match
+x509_extensions = v3_ca
+
+[ policy-match ]
+commonName      = supplied
+
+[ req ]
+distinguished_name = distinguished-name
+x509_extensions    = v3-ca
+prompt             = no
+
+[ distinguished-name ]
+CN = Acme Corporation Root CA
+
+[ v3-ca ]
+basicConstraints = critical, CA:true
+keyUsage         = critical, keyCertSign, cRLSign
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always
