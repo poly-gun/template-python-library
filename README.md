@@ -11,7 +11,7 @@ Additionally, there includes documentation, examples, and scripts relating to:
 - Private CA certificates and considerations
 - Virtual Environments
 - Local development opportunities and implications
-- 
+
 ### CI-CD
 
 The project includes a [`.gitlab-ci.yml`](./.gitlab-ci.yml) file that demonstrates automated-related builds, testing,
