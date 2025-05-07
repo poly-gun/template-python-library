@@ -2,9 +2,14 @@
 An example entrypoint.
 """
 
+import logging
 import argparse
 
+logger = logging.getLogger(__name__)
+
 def executable():
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] (%(levelname)s) %(message)s")
+
     # Create an argument parser object.
     parser = argparse.ArgumentParser(description="Python Example Template")
 
@@ -16,8 +21,6 @@ def executable():
     namespace = parser.parse_args()
 
     arguments = vars(namespace)
-
-    ...
 
 if __name__ == "__main__":
     executable()
