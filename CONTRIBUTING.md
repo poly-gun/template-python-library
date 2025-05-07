@@ -374,6 +374,11 @@ def example_api_callable(timeout: int = 600, url: str = "https://example-invalid
 
             response = session.get(url, timeout=timeout, stream=False, allow_redirects=True)
             
+            try:
+                response.raise_for_status()
+            except ...:
+                ...
+            
     if response.status_code == 200:
         return response.json()
 
