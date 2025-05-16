@@ -47,7 +47,7 @@ function main() {
         pip install certifi
     fi
 
-    cat "$(assets)/certificates/ca.crt.example.pem" >> "$(python -c "import certifi; print(certifi.where())")"
+    cat "$(assets)/certificates/ca.crt.example.pem" > "$(python -c "import certifi; print(certifi.where())")"
 }
 
 main
