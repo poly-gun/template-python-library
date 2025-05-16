@@ -2,6 +2,7 @@
 An example entrypoint.
 """
 
+import re
 import logging
 import argparse
 
@@ -10,11 +11,14 @@ handler = logging.StreamHandler()
 logger = logging.getLogger(__name__)
 
 class Formatter(logging.Formatter):
+    expression = r"(?<!\w)'([^\s']+)'(?!\w)"
+    substitution = r'"\1"'
+
     def format(self, record) -> str:
         # Modify the record or format the message as needed.
-        v = super().format(record).replace("'", "%s" % '"')
+        v = super().format(record)  # .replace("'", "%s" % '"')
 
-        return v
+        return re.sub(self.expression, self.substitution, v)
 
 formatter = Formatter("[%(levelname)s] (%(asctime)s) (%(name)s) %(message)s")
 
